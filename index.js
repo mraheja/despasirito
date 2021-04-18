@@ -47,7 +47,7 @@ function draw(buffer) {
     const audioValue = buffer[i] * audioAmplifier
     const cos = Math.cos(i * 2 * Math.PI / numberOfSides)
     const sin = Math.sin(i * 2 * Math.PI / numberOfSides)
-    const x1 = x + size * cos - audioValue // * (i % 2 === 1 ? -1: 1)
+    const x1 = x + size * cos - audioValue
     const y1 = y + size * sin + (i % 2 === 1 ? audioValue : 0)
     
     if (i === 0) {
@@ -123,20 +123,13 @@ function startRecognition(){
 }
 
 recognition.onresult = function(event) {
-  // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
-  // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
-  // It has a getter so it can be accessed like an array
-  // The first [0] returns the SpeechRecognitionResult at position 0.
-  // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
-  // These also have getters so they can be accessed like arrays.
-  // The second [0] returns the SpeechRecognitionAlternative at position 0.
-  // We then return the transcript property of the SpeechRecognitionAlternative object
   var speech = event.results[0][0].transcript;
   console.warn(speech);
   if(speech == 'where is my spoon' || speech == "where's my spoon"){
     htmlAudioElement.src = './spoon.m4a';
   }
   if(speech == "what's the weather like today"){
+    htmlAudioElement.src = './rain.mp3';
     matrix();
   }
   if(speech == 'canedo' || speech == 'Canada'){
