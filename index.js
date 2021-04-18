@@ -136,8 +136,11 @@ recognition.onresult = function(event) {
     htmlAudioElement.src = './kaneda.m4a';
   }
   if(speech == 'despacito'){
-    console.warn('here');
     htmlAudioElement.src = './despacito remix.mp3';
+  }
+
+  if(speech.includes('wake me up')){
+    htmlAudioElement.src = './wakeup.m4a';
   }
   reset();
   setTimeout(() => {htmlAudioElement.src = './despacito.mp3';}, 10000);
