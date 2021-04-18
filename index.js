@@ -1,5 +1,5 @@
 const audioContext = new AudioContext();
-const htmlAudioElement = document.getElementById("audio");
+let htmlAudioElement = document.getElementById("audio");
 const source = audioContext.createMediaElementSource(htmlAudioElement);
 source.connect(audioContext.destination);
 
@@ -86,14 +86,6 @@ function draw(buffer) {
   
   raf = requestAnimationFrame(loop)
 })();
-
-function switchcolor(){
-  if(!htmlAudioElement.paused){
-    return;
-  }
-  startRecognition();
-  mic.style.color = '#FF0000';
-}
 
 function reset(){
   mic.style.color = '#0099CC';
